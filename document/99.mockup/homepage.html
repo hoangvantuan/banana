@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<!-- BEGIN HEAD -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- javascript -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-social.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/customize.css">
+    <title>Home Page</title>
+</head>
+<!-- END HEAD-->
+<!-- BEGIN BODY -->
+
+<body>
+    <!-- BEGIN NAVBAR -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">PASSWORD MANAGER</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User account<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Change password</a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- END NAVBAR -->
+    <!-- BEGIN SEARCH BOX -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-8">
+                <form method="GET" action="#" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="search-key" placeholder="Search Key">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END SEARCH BOX-->
+    <!-- BEGIN CONTENT -->
+    <div class="container-fluid">
+        <!-- TITLE -->
+        <div class="row">
+            <h3 class="text-center">LIST ACCOUNT</h3>
+        </div>
+        <!-- END TITLE -->
+        <!-- DATA -->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <a href="#"><span class="glyphicon glyphicon-plus btn-add"></span>Add account</a>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <th class="text-center col-md-1">No</th>
+                            <th class="text-center col-md-5">URL</th>
+                            <th class="text-center col-md-2">Account</th>
+                            <th class="text-center col-md-2">Password</th>
+                            <th class="text-center col-md-2">Password Strength</th>
+                            <th class="text-center col-md-1">Edit</th>
+                            <th class="text-center col-md-1">Delete</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center col-md-1">1</td>
+                                <td class="col-md-5">google.com</td>
+                                <td class="col-md-2">tuankatty</td>
+                                <td class="col-md-2">
+                                    <ul class="list-inline">
+                                        <div class="col-md-8">
+                                            <li>********</li>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <li><a href="#"><span class="glyphicon glyphicon-eye-open btn-show"></span></a></li>
+                                            <li> <a href="#"><span class="glyphicon glyphicon-copy btn-copy"></span></a></li>                                            
+                                        </div>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="col-md-12">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                                Too Weak
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center col-md-1"><a href="#"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                <td class="text-center col-md-1"><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center col-md-1">2</td>
+                                <td class="col-md-5">google.com</td>
+                                <td class="col-md-2">tuankatty</td>
+                               <td class="col-md-2">
+                                    <ul class="list-inline">
+                                        <div class="col-md-8">
+                                            <li>********</li>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <li><a href="#"><span class="glyphicon glyphicon-eye-open btn-show"></span></a></li>
+                                            <li> <a href="#"><span class="glyphicon glyphicon-copy btn-copy"></span></a></li>                                            
+                                        </div>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="col-md-12">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                                Weak
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center col-md-1"><a href="#"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                <td class="text-center col-md-1"><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+                            </tr>
+                                <td class="text-center col-md-1">1</td>
+                                <td class="col-md-5">google.com</td>
+                                <td class="col-md-2">tuankatty</td>
+                                <td class="col-md-2">
+                                    <ul class="list-inline">
+                                        <div class="col-md-8">
+                                            <li>**********</li>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <li><a href="#"><span class="glyphicon glyphicon-eye-open btn-show"></span></a></li>
+                                            <li> <a href="#"><span class="glyphicon glyphicon-copy btn-copy"></span></a></li>                                            
+                                        </div>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="col-md-12">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                                Medium
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center col-md-1"><a href="#"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                <td class="text-center col-md-1"><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center col-md-1">4</td>
+                                <td class="col-md-5">google.com</td>
+                                <td class="col-md-2">tuankatty</td>
+                               <td class="col-md-2">
+                                    <ul class="list-inline">
+                                        <div class="col-md-8">
+                                            <li>*********</li>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <li><a href="#"><span class="glyphicon glyphicon-eye-open btn-show"></span></a></li>
+                                            <li> <a href="#"><span class="glyphicon glyphicon-copy btn-copy"></span></a></li>                                            
+                                        </div>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="col-md-12">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                                Strong
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center col-md-1"><a href="#"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                <td class="text-center col-md-1"><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center col-md-1">5</td>
+                                <td class="col-md-5">google.com</td>
+                                <td class="col-md-2">tuankatty</td>
+                               <td class="col-md-2">
+                                    <ul class="list-inline">
+                                        <div class="col-md-8">
+                                            <li>***************</li>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <li><a href="#"><span class="glyphicon glyphicon-eye-open btn-show"></span></a></li>
+                                            <li> <a href="#"><span class="glyphicon glyphicon-copy btn-copy"></span></a></li>                                            
+                                        </div>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="col-md-12">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                                Weak
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center col-md-1"><a href="#"><span class="glyphicon glyphicon-edit"></span></a></td>
+                                <td class="text-center col-md-1"><a href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END DATA -->
+        <div class="col-md-4 col-md-offset-4 text-center">
+            <nav aria-label="pagination">
+                  <ul class="pagination">
+                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="#">2 <span class="sr-only"></span></a></li>
+                    <li class=""><a href="#">3 <span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="#">4 <span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="#">5 <span class="sr-only">(current)</span></a></li>
+                    <li class=""><a href="#" aria-label="Previous"><span aria-hidden="true">&raquo;</span></a></li>
+                  </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- END CONTENT -->
+    <!-- BEGIN FOOTER -->
+    <hr />
+    <footer>
+        <p class="text-center text-info">Design and develop by @shun</p>
+    </footer>
+    <!-- END FOOTER -->
+</body>
+<!-- END BODY -->
+
+</html>
