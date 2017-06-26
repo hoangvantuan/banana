@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/tiles/tablib.jsp" %>
+
 <meta charset="utf-8">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta http-equiv="pragma" content="no-cache">
@@ -10,4 +13,5 @@
 <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 
 <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/bootstrap-social.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/assets/css/customize.css" rel="stylesheet">
