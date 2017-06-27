@@ -1,41 +1,41 @@
 package banana.bean;
 
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "account")
+
+public class Account {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "ID")
+	@Column(name = "ID", nullable = false)
 	private String id;
 
 	@NotEmpty
-	@Email
-	@Column(name = "EMAIL", nullable = false, unique = true)
-	private String email;
+	@Column(name = "URL", nullable = false)
+	private String url;
+
+	@NotEmpty
+	@Column(name = "ACCOUNT_NAME", nullable = false)
+	private String accountName;
 
 	@NotEmpty
 	@Size(min = 8)
 	@Column(name = "PASSWORD", nullable = false)
 	private String password;
-
-	@Column(name = "ACTIVE")
-	private Boolean active;
 
 	@Column(name = "CREATE_AT")
 	private Date createAt;
@@ -43,8 +43,9 @@ public class User {
 	@Column(name = "UPDATE_AT")
 	private Date updateAt;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	Set<Account> accounts;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 
 	public String getId() {
 		return id;
@@ -54,12 +55,20 @@ public class User {
 		this.id = id;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getAccountName() {
+		return accountName;
+	}
+
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
 	}
 
 	public String getPassword() {
@@ -68,14 +77,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public Boolean getActive() {
-		return active;
-	}
-
-	public void setActive(Boolean active) {
-		this.active = active;
 	}
 
 	public Date getCreateAt() {
@@ -94,11 +95,12 @@ public class User {
 		this.updateAt = updateAt;
 	}
 
-	public Set<Account> getAccounts() {
-		return accounts;
+	public User getUser() {
+		return user;
 	}
 
-	public void setAccounts(Set<Account> accounts) {
-		this.accounts = accounts;
+	public void setUser(User user) {
+		this.user = user;
 	}
+
 }
