@@ -7,22 +7,19 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 @Entity
 @Table(name = "sequence")
 
 public class Sequence {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
-	@NotEmpty
-	@Column(name = "TABLE_NAME", nullable=false)
+	@Column(name = "TABLE_NAME", nullable = false)
 	private String id;
 
-	@NotEmpty
-	@Column(name = "SEQUENCE_NUMBER", nullable=false)
-	private Long userID;
+	@Column(name = "SEQUENCE_NUMBER", nullable = false)
+	private Long sequenceNumber;
 
 	@Column(name = "CREATE_AT")
 	private Date createAt;
@@ -38,12 +35,12 @@ public class Sequence {
 		this.id = id;
 	}
 
-	public Long getUserID() {
-		return userID;
+	public Long getSequenceNumber() {
+		return sequenceNumber;
 	}
 
-	public void setUserID(Long userID) {
-		this.userID = userID;
+	public void setSequenceNumber(Long sequenceNumber) {
+		this.sequenceNumber = sequenceNumber;
 	}
 
 	public Date getCreateAt() {

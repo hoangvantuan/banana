@@ -17,6 +17,16 @@
 	<!-- resource config -->
 	<mvc:resources mapping="/assets/**" location="/assets/" />
 
+	<!-- authentication interceptor -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/resources/**" />
+			<bean class="banana.controller.AuthenticationInterceptor"></bean>
+		</mvc:interceptor>
+
+	</mvc:interceptors>
+
 	<!-- view resovle config -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"></bean>
@@ -61,7 +71,7 @@
 	</bean>
 
 	<!-- Hibernate SessionFactory Bean definition -->
-	<bean id="hibernate4AnnotatedSessionFactory"
+	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
@@ -69,7 +79,6 @@
 				<value>banana.bean.User</value>
 				<value>banana.bean.Account</value>
 				<value>banana.bean.Sequence</value>
-				<value>banana.bean.UserAccount</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -80,19 +89,16 @@
 		</property>
 	</bean>
 
-	<bean id="userDAO" class="banana.database.dao.impl.UserDAOImpl">
-		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</bean>
-
-	<bean id="userService" class="banana.database.service.impl.UserServiceImpl">
-		<property name="userDAO" ref="userDAO"></property>
-	</bean>
-
-	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+
+	<!-- DAO, Service -->
+	<bean id="userDAO" class="banana.database.dao.impl.UserDAOImpl" />
+	<bean id="userService" class="banana.database.service.impl.UserServiceImpl" />
+
 
 </beans>

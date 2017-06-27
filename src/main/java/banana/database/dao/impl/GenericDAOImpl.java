@@ -5,20 +5,18 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import banana.database.dao.GenericDAO;
 
 public abstract class GenericDAOImpl<E, Id extends Serializable> implements GenericDAO<E, Id> {
 
+	@Autowired
 	protected SessionFactory sessionFactory;
 
 	abstract Class getFormClass();
 
 	abstract String getEntityName();
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	public Session getSession() {
 		return this.sessionFactory.getCurrentSession();

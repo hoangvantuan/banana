@@ -4,8 +4,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -15,20 +19,22 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Account {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
-	@Column(name = "ID")
+	@Column(name = "ID", nullable = false)
 	private String id;
 
 	@NotEmpty
-	@Column(name = "URL", nullable=false)
+	@Column(name = "URL", nullable = false)
 	private String url;
 
 	@NotEmpty
-	@Column(name = "ACCOUNT_NAME", nullable=false)
+	@Column(name = "ACCOUNT_NAME", nullable = false)
 	private String accountName;
 
 	@NotEmpty
-	@Column(name = "PASSWORD", nullable=false)
+	@Size(min = 8)
+	@Column(name = "PASSWORD", nullable = false)
 	private String password;
 
 	@Column(name = "CREATE_AT")
@@ -36,6 +42,10 @@ public class Account {
 
 	@Column(name = "UPDATE_AT")
 	private Date updateAt;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 
 	public String getId() {
 		return id;
@@ -83,6 +93,14 @@ public class Account {
 
 	public void setUpdateAt(Date updateAt) {
 		this.updateAt = updateAt;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

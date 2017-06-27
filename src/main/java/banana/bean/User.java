@@ -1,34 +1,36 @@
 package banana.bean;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "user")
-
 public class User {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "ID")
 	private String id;
 
 	@NotEmpty
-	@Column(name = "EMAIL", nullable = false)
+	@Email
+	@Column(name = "EMAIL", nullable = false, unique = true)
 	private String email;
 
 	@NotEmpty
+	@Size(min = 8)
 	@Column(name = "PASSWORD", nullable = false)
 	private String password;
 
@@ -41,10 +43,8 @@ public class User {
 	@Column(name = "UPDATE_AT")
 	private Date updateAt;
 
-	@NotEmpty
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "user_account", joinColumns = { @JoinColumn(name="user_id")}, inverseJoinColumns = { @JoinColumn(name="account_id")})
-	List<Account> accounts;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	Set<Account> accounts;
 
 	public String getId() {
 		return id;
@@ -94,11 +94,11 @@ public class User {
 		this.updateAt = updateAt;
 	}
 
-	public List<Account> getAccounts() {
+	public Set<Account> getAccounts() {
 		return accounts;
 	}
 
-	public void setAccounts(List<Account> accounts) {
+	public void setAccounts(Set<Account> accounts) {
 		this.accounts = accounts;
 	}
 }

@@ -8,4 +8,5 @@ public interface UserService {
 
 	public void create(User user) throws Exception;
 	public List<User> listAll() throws Exception;
+	public User getUserByEmail(String email) throws Exception;
 }

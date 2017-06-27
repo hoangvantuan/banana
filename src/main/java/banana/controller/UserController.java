@@ -1,7 +1,6 @@
 package banana.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,13 +14,8 @@ import banana.database.service.UserService;
 @Controller
 public class UserController {
 
-	private UserService userService;
-
-	@Autowired(required=true)
-	@Qualifier(value="userService")
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
+	@Autowired
+	public UserService userService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model){
