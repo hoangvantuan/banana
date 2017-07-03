@@ -1,7 +1,5 @@
 package banana.database.service.impl;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,29 +8,50 @@ import org.springframework.stereotype.Service;
 import banana.bean.User;
 import banana.database.dao.UserDAO;
 import banana.database.service.UserService;
+import banana.util.system.SystemUtil;
+import banana.util.system.ViewName;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl extends UserService {
 
 	@Autowired
 	private UserDAO userDAO;
 
 	@Override
-	@Transactional
-	public void create(User user) throws Exception {
-		this.userDAO.create(user);
+	public String getLoginForm() {
+		this.clearNotifys();
+		User user = new User();
+		this.getModel().addAttribute("userForm", user);
+
+		return this.getViewName();
 	}
 
 	@Override
 	@Transactional
-	public List<User> listAll() throws Exception {
-		return this.userDAO.listAll();
+	public String login() {
+		this.clearNotifys();
+		if(this.getBindingResult().hasErrors()) {
+			return this.getViewName();
+		}
+
+		try {
+			User user = userDAO.checkLogin(this.user);
+			if(SystemUtil.isNull(user)) {
+				this.setMessages("banana.login.error");
+				this.getModel().addAttribute("messages", this.getMessages());
+				return ViewName.LOGIN.getViewName();
+			}
+			else {
+				this.getRequest().getSession().setAttribute("user", user);
+				this.setMessages("banana.login.message.success");
+				return redirect("/");
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			this.setMessages("banana.login.error");
+			this.getModel().addAttribute("messages", this.getMessages());
+			return ViewName.LOGIN.getViewName();
+		}
 	}
 
-	@Override
-	@Transactional
-	public User getUserByEmail(String email) throws Exception {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
 }

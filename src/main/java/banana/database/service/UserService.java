@@ -1,12 +1,21 @@
 package banana.database.service;
 
-import java.util.List;
-
 import banana.bean.User;
 
-public interface UserService {
+public abstract class UserService extends BaseService<UserService> {
 
-	public void create(User user) throws Exception;
-	public List<User> listAll() throws Exception;
-	public User getUserByEmail(String email) throws Exception;
+	protected User user;
+
+	public abstract String getLoginForm();
+	public abstract String login();
+
+	public User getUser() {
+		return user;
+	}
+
+	public UserService setUser(User user) {
+		this.user = user;
+		return this;
+	}
+
 }

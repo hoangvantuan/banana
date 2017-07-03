@@ -14,7 +14,7 @@ public abstract class GenericDAOImpl<E, Id extends Serializable> implements Gene
 	@Autowired
 	protected SessionFactory sessionFactory;
 
-	abstract Class getFormClass();
+	abstract Class<?> getFormClass();
 
 	abstract String getEntityName();
 

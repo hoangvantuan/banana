@@ -43,7 +43,7 @@ public class Account {
 	@Column(name = "UPDATE_AT")
 	private Date updateAt;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
 

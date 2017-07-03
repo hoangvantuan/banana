@@ -4,13 +4,16 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<!--  DEFAULT LAYOUT-->
+	<!-- DEFAULT LAYOUT -->
 	<definition name="baseLayout" template="/WEB-INF/views/tiles/default-layout.jsp">
 		<put-attribute name="title" value=""></put-attribute>
-		<put-attribute name="head" value="/WEB-INF/views/tiles/default-head.jsp" />
-		<put-attribute name="navigation" value="/WEB-INF/views/tiles/default-navigation.jsp" />
+		<put-attribute name="head"
+			value="/WEB-INF/views/tiles/default-head.jsp" />
+		<put-attribute name="navigation"
+			value="/WEB-INF/views/tiles/default-navigation.jsp" />
 		<put-attribute name="body" value=""></put-attribute>
-		<put-attribute name="footer" value="/WEB-INF/views/tiles/default-footer.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/tiles/default-footer.jsp" />
 	</definition>
 
 	<!-- LOGIN -->
@@ -19,11 +22,40 @@
 		<put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />
 	</definition>
 
-	<!-- HOME PAGE -->
-	<definition name="homepage" extends="baseLayout">
-		<put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />
+	<!-- REGISTER -->
+	<definition name="register" extends="baseLayout">
+		<put-attribute name="title" value="banana.login.page.title"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/pages/register.jsp" />
 	</definition>
 
+	<!-- RESET -->
+	<definition name="reset" extends="baseLayout">
+		<put-attribute name="title" value="banana.login.page.title"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/pages/reset.jsp" />
+	</definition>
 
+	<!-- CHANGE PASSWORD -->
+	<definition name="change-password" extends="baseLayout">
+		<put-attribute name="title" value="banana.login.page.title"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/pages/user-change-password.jsp" />
+	</definition>
+
+	<!-- ACCOUNT ADD -->
+	<definition name="account-add" extends="baseLayout">
+		<put-attribute name="title" value="banana.login.page.title"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/pages/account-add.jsp" />
+	</definition>
+
+	<!-- ACCOUNT EDIT -->
+	<definition name="account-edit" extends="baseLayout">
+		<put-attribute name="title" value="banana.login.page.title"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/pages/account-edit.jsp" />
+	</definition>
+
+	<!-- HOME PAGE -->
+	<definition name="homepage" extends="baseLayout">
+		<put-attribute name="title" value="banana.login.page.title"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/pages/homepage.jsp" />
+	</definition>
 
 </tiles-definitions>

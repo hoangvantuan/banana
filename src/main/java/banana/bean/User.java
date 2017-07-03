@@ -9,10 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
+import banana.validation.EmailField;
 
 @Entity
 @Table(name = "user")
@@ -24,13 +22,10 @@ public class User {
 	@Column(name = "ID")
 	private String id;
 
-	@NotEmpty
-	@Email
+	@EmailField
 	@Column(name = "EMAIL", nullable = false, unique = true)
 	private String email;
 
-	@NotEmpty
-	@Size(min = 8)
 	@Column(name = "PASSWORD", nullable = false)
 	private String password;
 
@@ -43,7 +38,7 @@ public class User {
 	@Column(name = "UPDATE_AT")
 	private Date updateAt;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	Set<Account> accounts;
 
 	public String getId() {

@@ -10,7 +10,7 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 	<!-- load controller -->
-	<context:component-scan base-package="banana.controller" />
+	<context:component-scan base-package="banana" />
 
 	<mvc:annotation-driven />
 
@@ -20,11 +20,10 @@
 	<!-- authentication interceptor -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
+			<mvc:mapping path="/**" />
 			<mvc:exclude-mapping path="/resources/**" />
 			<bean class="banana.controller.AuthenticationInterceptor"></bean>
 		</mvc:interceptor>
-
 	</mvc:interceptors>
 
 	<!-- view resovle config -->
@@ -95,10 +94,5 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
-	<!-- DAO, Service -->
-	<bean id="userDAO" class="banana.database.dao.impl.UserDAOImpl" />
-	<bean id="userService" class="banana.database.service.impl.UserServiceImpl" />
-
 
 </beans>

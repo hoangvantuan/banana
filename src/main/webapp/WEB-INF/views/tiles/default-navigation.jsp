@@ -10,14 +10,14 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">PASSWORD MANAGER</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath }">PASSWORD MANAGER</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Login</a></li>
-				<li><a href="#">Register</a></li>
+				<li><a href="${pageContext.request.contextPath }/login">Login</a></li>
+				<li><a href="${pageContext.request.contextPath }/register">Register</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
