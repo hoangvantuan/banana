@@ -16,7 +16,7 @@ public enum ViewName {
 		this.viewName = viewName;
 	}
 
-	public String getViewName() {
+	public String get() {
 		return this.viewName;
 	}
 }

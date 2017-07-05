@@ -6,26 +6,37 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
+
 import banana.validation.EmailField;
+import banana.validation.PasswordField;
 
 @Entity
 @Table(name = "user")
+@DynamicInsert
+@DynamicUpdate
 public class User {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "ID")
-	private String id;
+	@GenericGenerator(name="generator", strategy="increment")
+	@GeneratedValue(generator="generator")
+	private int id;
 
 	@EmailField
 	@Column(name = "EMAIL", nullable = false, unique = true)
 	private String email;
 
+	@PasswordField
 	@Column(name = "PASSWORD", nullable = false)
 	private String password;
 
@@ -39,13 +50,13 @@ public class User {
 	private Date updateAt;
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-	Set<Account> accounts;
+	private Set<Account> accounts;
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

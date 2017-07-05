@@ -23,18 +23,13 @@ public abstract class GenericDAOImpl<E, Id extends Serializable> implements Gene
 	}
 
 	@Override
-	public void create(E instance) throws Exception {
-		this.getSession().persist(instance);
+	public void saveOrUpdate(E instance) throws Exception {
+		this.getSession().saveOrUpdate(instance);
 	}
 
 	@Override
 	public void delete(E instance) throws Exception {
 		this.getSession().delete(instance);
-	}
-
-	@Override
-	public void save(E instance) throws Exception {
-		this.getSession().update(instance);
 	}
 
 	@Override

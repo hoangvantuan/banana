@@ -10,6 +10,8 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import banana.bean.User;
+import banana.util.system.Path;
+import banana.util.system.SystemUtil;
 
 /**
  *
@@ -26,16 +28,17 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 		guestPaths = new ArrayList<String>();
 
 		/* guest action */
-		guestPaths.add("^/banana/login[/]$");
-		guestPaths.add("^/banana/register[/]$");
-		guestPaths.add("^/banana/active.*$");
-		guestPaths.add("^/banana/reset[/]$");
+		guestPaths.add("^/banana/login/?$");
+		guestPaths.add("^/banana/register/?$");
+		guestPaths.add("^/banana/active.*/$");
+		guestPaths.add("^/banana/reset$");
 
 		/* user action */
-		userPaths.add("^/banana[/]$");
-		userPaths.add("^/banana/account/add[/]$");
+		userPaths.add("^/banana/?$");
+		userPaths.add("^/banana/account/add/?$");
 		userPaths.add("^/banana/account/edit/.*$");
 		userPaths.add("^/banana/account/delele/.*$");
+		userPaths.add("^/banana/changepassword$");
 	}
 
 	@Override
@@ -43,18 +46,19 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
 		User user = (User)request.getSession().getAttribute("user");
 		String path = request.getRequestURI();
-		if(user == null) {
+		if(SystemUtil.isNull(user)) {
 			for(String temp : userPaths) {
 				if(path.matches(temp)) {
-					response.sendRedirect(request.getContextPath() + "/login");
-					break;
+					response.sendRedirect(request.getContextPath() + Path.LOGIN.get());
+					return false;
 				}
 			}
 
 		} else {
 			for(String temp : guestPaths) {
 				if(path.matches(temp)) {
-					response.sendRedirect(request.getContextPath() + "/");
+					response.sendRedirect(request.getContextPath() + Path.HONE.get());
+					return false;
 				}
 			}
 		}

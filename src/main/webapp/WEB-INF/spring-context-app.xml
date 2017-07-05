@@ -77,7 +77,6 @@
 			<list>
 				<value>banana.bean.User</value>
 				<value>banana.bean.Account</value>
-				<value>banana.bean.Sequence</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

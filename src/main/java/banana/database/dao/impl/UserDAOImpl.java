@@ -25,7 +25,7 @@ public class UserDAOImpl extends GenericDAOImpl<User, String> implements UserDAO
 
 	@Override
 	public User findByEmail(String email) throws Exception {
-		List<User> users = (List<User>)this.getSession().createQuery("FROM " + this.getEntityName() + " AS A WHERE A.email = " + "\"" + email + "\"").list();
+		List<User> users = (List<User>)this.getSession().createQuery("FROM " + this.getEntityName() + " AS A WHERE A.email = " + "\'" + email + "\'").list();
 		if(users.size() == 1) {
 			return users.get(0);
 		}

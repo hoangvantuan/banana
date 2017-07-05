@@ -4,17 +4,26 @@ import banana.bean.User;
 
 public abstract class UserService extends BaseService<UserService> {
 
-	protected User user;
+	protected User userForm;
 
 	public abstract String getLoginForm();
 	public abstract String login();
+	public abstract String setDataForHomePage();
+	public abstract String logout();
+	public abstract String getRegisterForm();
+	public abstract String register();
+	public abstract String active();
+	public abstract String getPasswordForm();
+	public abstract String getPassword();
+	public abstract String getChangePasswordForm();
+	public abstract String changePassword();
 
-	public User getUser() {
-		return user;
+	public User getUserForm() {
+		return userForm;
 	}
 
-	public UserService setUser(User user) {
-		this.user = user;
+	public UserService setUserForm(User userForm) {
+		this.userForm = userForm;
 		return this;
 	}
 

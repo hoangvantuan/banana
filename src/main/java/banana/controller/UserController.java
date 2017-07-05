@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import banana.bean.User;
 import banana.database.service.UserService;
-import banana.util.system.ViewName;
 
 @Controller
 public class UserController {
@@ -23,42 +22,52 @@ public class UserController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model){
-		return userService.setModel(model).setViewName(ViewName.LOGIN).getLoginForm();
+		return userService.setModel(model).getLoginForm();
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute("userForm") @Valid User userForm, BindingResult bindingResult, Model model, HttpServletRequest request) {
-		return userService.setBindingResult(bindingResult).setUser(userForm).setModel(model).setRequest(request).login();
+		return userService.setBindingResult(bindingResult).setUserForm(userForm).setModel(model).setRequest(request).login();
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register(Model model) {
-		return "register";
+		return userService.setModel(model).getRegisterForm();
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String register(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
-		return "register";
+	public String register(@ModelAttribute("userForm") @Valid User userForm, BindingResult bindingResult, Model model) {
+		return userService.setModel(model).setBindingResult(bindingResult).setUserForm(userForm).register();
 	}
 
-	@RequestMapping(value = "/active", method = RequestMethod.GET)
-	public String active(Model model) {
-		return "active";
+	@RequestMapping(value = "/active/{email}/", method = RequestMethod.GET)
+	public String active(Model model,User userForm) {
+		return userService.setUserForm(userForm).setModel(model).active();
 	}
 
 	@RequestMapping(value = "/reset", method = RequestMethod.GET)
 	public String reset(Model model) {
-		return "active";
+		return userService.setModel(model).getPasswordForm();
 	}
 
 	@RequestMapping(value = "/reset", method = RequestMethod.POST)
-	public String reset(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
-		return "active";
+	public String reset(@ModelAttribute("userForm") User userForm, Model model) {
+		return userService.setUserForm(userForm).setModel(model).getPassword();
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout(Model model) {
-		return "logout";
+	public String logout(Model model, HttpServletRequest request) {
+		return userService.setRequest(request).logout();
+	}
+
+	@RequestMapping(value = "/changepassword", method = RequestMethod.GET)
+	public String changePassword(Model model) {
+		return userService.setModel(model).getChangePasswordForm();
+	}
+
+	@RequestMapping(value = "/changepassword", method = RequestMethod.POST)
+	public String changePassword(@ModelAttribute("userForm") User userForm, Model model, HttpServletRequest request) {
+		return userService.setUserForm(userForm).setModel(model).setRequest(request).changePassword();
 	}
 
 }

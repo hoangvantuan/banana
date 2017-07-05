@@ -5,24 +5,31 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "account")
-
+@DynamicInsert
+@DynamicUpdate
 public class Account {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "ID", nullable = false)
-	private String id;
+	@Column(name = "ID")
+	@GenericGenerator(name="generator", strategy="increment")
+	@GeneratedValue(generator="generator")
+	private int id;
 
 	@NotEmpty
 	@Column(name = "URL", nullable = false)
@@ -38,7 +45,7 @@ public class Account {
 	private String password;
 
 	@Column(name = "CREATE_AT")
-	private Date createAt;
+	private Date createAt = new Date();
 
 	@Column(name = "UPDATE_AT")
 	private Date updateAt;
@@ -47,11 +54,11 @@ public class Account {
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

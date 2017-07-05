@@ -12,23 +12,23 @@ import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
 import banana.util.string.StringUtil;
-import banana.validation.EmailField.EmailFieldValidator;
+import banana.validation.PasswordField.PasswordFieldValidator;
 
 @Documented
-@Constraint(validatedBy = EmailFieldValidator.class)
+@Constraint(validatedBy = PasswordFieldValidator.class)
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EmailField {
+public @interface PasswordField {
 
-	String message() default "banana.validation.error.user.email";
+	String message() default "banana.validation.error.user.password";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
-    class EmailFieldValidator implements ConstraintValidator<EmailField, String> {
+    class PasswordFieldValidator implements ConstraintValidator<PasswordField, String> {
     	@Override
-    	public void initialize(EmailField constraintAnnotation) {
+    	public void initialize(PasswordField constraintAnnotation) {
 
     	}
 
@@ -39,11 +39,7 @@ public @interface EmailField {
     			return false;
     		}
 
-    		if(!value.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")) {
-    			return false;
-    		}
-
-    		if(value.length() > 30 ) {
+    		if(value.length() < 8 || value.length() > 20) {
     			return false;
     		}
 

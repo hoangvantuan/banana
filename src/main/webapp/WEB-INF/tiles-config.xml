@@ -24,37 +24,37 @@
 
 	<!-- REGISTER -->
 	<definition name="register" extends="baseLayout">
-		<put-attribute name="title" value="banana.login.page.title"></put-attribute>
+		<put-attribute name="title" value="banana.register.page.title"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/pages/register.jsp" />
 	</definition>
 
 	<!-- RESET -->
 	<definition name="reset" extends="baseLayout">
-		<put-attribute name="title" value="banana.login.page.title"></put-attribute>
+		<put-attribute name="title" value="banana.user.reset.page.title"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/pages/reset.jsp" />
 	</definition>
 
 	<!-- CHANGE PASSWORD -->
-	<definition name="change-password" extends="baseLayout">
-		<put-attribute name="title" value="banana.login.page.title"></put-attribute>
+	<definition name="changepassword" extends="baseLayout">
+		<put-attribute name="title" value="banana.user.changepassword.page.title"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/pages/user-change-password.jsp" />
 	</definition>
 
 	<!-- ACCOUNT ADD -->
-	<definition name="account-add" extends="baseLayout">
-		<put-attribute name="title" value="banana.login.page.title"></put-attribute>
+	<definition name="accountadd" extends="baseLayout">
+		<put-attribute name="title" value="banana.account.add.page.title"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/pages/account-add.jsp" />
 	</definition>
 
 	<!-- ACCOUNT EDIT -->
-	<definition name="account-edit" extends="baseLayout">
-		<put-attribute name="title" value="banana.login.page.title"></put-attribute>
+	<definition name="accountedit" extends="baseLayout">
+		<put-attribute name="title" value="banana.account.edit.page.title"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/pages/account-edit.jsp" />
 	</definition>
 
 	<!-- HOME PAGE -->
 	<definition name="homepage" extends="baseLayout">
-		<put-attribute name="title" value="banana.login.page.title"></put-attribute>
+		<put-attribute name="title" value="banana.home.page.title"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/pages/homepage.jsp" />
 	</definition>
 

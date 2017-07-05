@@ -8,28 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
-import banana.util.system.ViewName;
-
 public class BaseService<T> {
 
-	private ViewName viewName;
 	private Model model;
 	private BindingResult bindingResult;
 	private HttpServletRequest request;
 	private List<String> messages;
 
 	public BaseService() {
-		this.viewName = ViewName.HOMEPAGE;
 	}
 
-	public String getViewName() {
-		return viewName.getViewName();
-	}
-
-	public T setViewName(ViewName viewName) {
-		this.viewName = viewName;
-		return (T) this;
-	}
 
 	public Model getModel() {
 		return model;
@@ -62,8 +50,13 @@ public class BaseService<T> {
 		return messages;
 	}
 
-	public void setMessages(List<String> messages) {
-		this.messages = messages;
+	public T setMessages(List<String> messages) {
+		if(messages != null && this.messages.size() == 0)
+			this.messages = messages;
+		else {
+			messages.addAll(messages);
+		}
+		return (T) this;
 	}
 
 	public void setMessages(String message) {
@@ -81,5 +74,9 @@ public class BaseService<T> {
 
 	public String redirect(String path) {
 		return "redirect:" + path;
+	}
+
+	public void addModelAttribute(String modelName, Object model) {
+		this.getModel().addAttribute(modelName, model);
 	}
 }
