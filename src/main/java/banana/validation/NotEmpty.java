@@ -1,7 +1,6 @@
 package banana.validation;
 
-import banana.util.string.StringUtil;
-import banana.validation.EmailField.EmailFieldValidator;
+import banana.validation.NotEmpty.NotEmptyFieldValidator;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -13,35 +12,26 @@ import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
 @Documented
-@Constraint(validatedBy = EmailFieldValidator.class)
+@Constraint(validatedBy = NotEmptyFieldValidator.class)
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EmailField {
+public @interface NotEmpty {
 
-  String message() default "banana.validation.error.user.email";
+  String message() default "banana.validation.error.notempty.field";
 
   Class<?>[] groups() default {};
 
   Class<? extends Payload>[] payload() default {};
 
-  class EmailFieldValidator implements ConstraintValidator<EmailField, String> {
+  class NotEmptyFieldValidator implements ConstraintValidator<NotEmpty, String> {
     @Override
-    public void initialize(EmailField constraintAnnotation) {
+    public void initialize(NotEmpty constraintAnnotation) {
 
     }
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-
-      if (StringUtil.isNull(value)) {
-        return false;
-      }
-
-      if (!value.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")) {
-        return false;
-      }
-
-      if (value.length() > 30) {
+      if(value == null || value.length() == 0) {
         return false;
       }
 

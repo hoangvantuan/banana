@@ -75,8 +75,8 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>banana.bean.User</value>
-				<value>banana.bean.Account</value>
+				<value>banana.model.User</value>
+				<value>banana.model.Account</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

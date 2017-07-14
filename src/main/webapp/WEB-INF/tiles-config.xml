@@ -41,13 +41,13 @@
 	</definition>
 
 	<!-- ACCOUNT ADD -->
-	<definition name="accountadd" extends="baseLayout">
+	<definition name="addaccount" extends="baseLayout">
 		<put-attribute name="title" value="banana.account.add.page.title"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/pages/account-add.jsp" />
 	</definition>
 
 	<!-- ACCOUNT EDIT -->
-	<definition name="accountedit" extends="baseLayout">
+	<definition name="editaccount" extends="baseLayout">
 		<put-attribute name="title" value="banana.account.edit.page.title"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/pages/account-edit.jsp" />
 	</definition>

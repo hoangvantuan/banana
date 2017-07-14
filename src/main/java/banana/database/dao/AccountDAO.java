@@ -1,7 +1,7 @@
 package banana.database.dao;
 
-import banana.bean.Account;
+import banana.model.Account;
 
-public interface AccountDAO extends GenericDAO<Account, String>{
+public interface AccountDAO extends GenericDAO<Account, Integer> {
 
 }

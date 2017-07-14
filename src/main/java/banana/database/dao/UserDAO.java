@@ -1,9 +1,10 @@
 package banana.database.dao;
 
-import banana.bean.User;
+import banana.model.User;
 
-public interface UserDAO extends GenericDAO<User, String>{
+public interface UserDAO extends GenericDAO<User, Integer> {
 
-	public User findByEmail(String email) throws Exception;
-	public User checkLogin(User user) throws Exception;
+  public User findByEmail(String email) throws Exception;
+
+  public User checkLogin(User user) throws Exception;
 }
