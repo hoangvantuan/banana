@@ -3,12 +3,13 @@ package banana.controller;
 import banana.database.service.AuthenticationService;
 import banana.model.User;
 import banana.util.system.ViewName;
+import banana.validation.CreateGroup;
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +32,7 @@ public class AuthenticationController {
   }
 
   @RequestMapping(value = "/login", method = RequestMethod.POST)
-  public String login(@ModelAttribute("user") @Valid User userForm, BindingResult bindingResult, Model model, HttpServletRequest request) {
+  public String login(@ModelAttribute("user") @Validated(CreateGroup.class) User userForm, BindingResult bindingResult, Model model, HttpServletRequest request) {
     return authenticationService.setBindingResult(bindingResult).setUser(userForm).setModel(model).setRequest(request).login();
   }
 
@@ -42,7 +43,7 @@ public class AuthenticationController {
   }
 
   @RequestMapping(value = "/register", method = RequestMethod.POST)
-  public String register(@ModelAttribute("user") @Valid User userForm, BindingResult bindingResult, Model model) {
+  public String register(@ModelAttribute("user") @Validated(CreateGroup.class) User userForm, BindingResult bindingResult, Model model) {
     return authenticationService.setModel(model).setBindingResult(bindingResult).setUser(userForm).register();
   }
 

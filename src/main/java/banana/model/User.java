@@ -1,10 +1,11 @@
 package banana.model;
 
+import banana.validation.CreateGroup;
 import banana.validation.EmailField;
 import banana.validation.PasswordField;
 import banana.validation.UpdateGroup;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,11 +31,11 @@ public class User {
   @GeneratedValue(generator = "generator")
   private Integer id;
 
-  @EmailField
+  @EmailField(groups = {CreateGroup.class})
   @Column(name = "EMAIL", nullable = false, unique = true)
   private String email;
 
-  @PasswordField(groups = {UpdateGroup.class})
+  @PasswordField(groups = {UpdateGroup.class, CreateGroup.class})
   @Column(name = "PASSWORD", nullable = false)
   private String password;
 
@@ -48,7 +49,7 @@ public class User {
   private Date updateAt;
 
   @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-  private Set<Account> accounts;
+  private List<Account> accounts;
 
   public User() {
     this.id = null;
@@ -108,11 +109,11 @@ public class User {
     this.updateAt = updateAt;
   }
 
-  public Set<Account> getAccounts() {
+  public List<Account> getAccounts() {
     return accounts;
   }
 
-  public void setAccounts(Set<Account> accounts) {
+  public void setAccounts(List<Account> accounts) {
     this.accounts = accounts;
   }
 

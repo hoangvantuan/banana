@@ -15,9 +15,25 @@
 	}
 
 	function hideToogle() {
-		setTimeout(() => {
+		setTimeout(function() {
 			$('a[data-toggle="tooltip"]').tooltip('hide');
 		}, 200);
+	}
+
+	function deleteAccount(id) {
+		if (confirm('Realy want delete this?')) {
+			$.ajax({
+				type: 'GET',
+				url: '${pageContext.request.contextPath}/account/delete/' + id,
+				data: {}
+			}).done(function(responses, textStatus, xhr) {
+				var element = "#account" + id;
+				$(element).remove();
+			}).fail(function(responses, textStatus, xhr) {
+			}).always(function(responses) {
+				$("#message").html(responses);
+			})
+		}
 	}
 
 	$(document).ready(function() {
@@ -34,10 +50,10 @@
 <!-- BEGIN SEARCH BOX -->
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-4 col-md-offset-8">
-			<form method="GET" action="#" class="form-inline">
+		<div class="col-md-3 col-md-offset-9">
+			<form method="GET" action="${pageContext.request.contextPath }/search" class="form-inline">
 				<div class="form-group">
-					<input type="text" class="form-control" id="search-key" placeholder="Search Key">
+					<input type="text" class="form-control" id="search-key" name="key" autofocus="autofocus">
 				</div>
 				<button type="submit" class="btn btn-primary">Search</button>
 			</form>
@@ -49,38 +65,42 @@
 <div class="container-fluid">
 	<!-- TITLE -->
 	<div class="row">
-		<h3 class="text-center"><s:message code="banana.home.label.title"></s:message></h3>
+		<h3 class="text-center">
+			<s:message code="banana.home.label.title"></s:message>
+		</h3>
 	</div>
 	<!-- END TITLE -->
-	<div>
+	<div class="row">
 		<c:forEach var="message" items="${messages}">
 			<p class="text-danger">
 				<s:message code="${message}" />
 			</p>
 		</c:forEach>
+		<p id="message" class="text-danger text-center"></p>
 	</div>
 	<!-- DATA -->
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<a href="${pageContext.request.contextPath }/account/add"><span class="glyphicon glyphicon-plus btn-add"></span><s:message code="banana.home.add.account.link"></s:message></a>
-			<div class="table-responsive">
+		<div class="col-md-10 col-md-offset-1">
+			<a href="${pageContext.request.contextPath }/account/add"><span class="glyphicon glyphicon-plus btn-add"></span>
+			<s:message code="banana.home.add.account.link"></s:message></a>
+			<div>
 				<table class="table table-bordered table-striped">
 					<thead>
-						<th class="text-center col-md-1"><s:message code="banana.home.account.table.label.no"></s:message></th>
-						<th class="text-center col-md-3"><s:message code="banana.home.account.table.label.domain"></s:message></th>
-						<th class="text-center col-md-2"><s:message code="banana.home.account.table.label.account"></s:message></th>
-						<th class="text-center col-md-2" style="min-width: 150px;"><s:message code="banana.home.account.table.label.password"></s:message></th>
-						<th class="text-center col-md-2"><s:message code="banana.home.account.table.label.password.strength"></s:message></th>
-						<th class="text-center col-md-1"><s:message code="banana.home.account.table.label.edit"></s:message></th>
-						<th class="text-center col-md-1"><s:message code="banana.home.account.table.label.delete"></s:message></th>
+						<th class="text-center" style="width: 50px;"><s:message code="banana.home.account.table.label.no"></s:message></th>
+						<th class="text-center" style="width: 600px;"><s:message code="banana.home.account.table.label.domain"></s:message></th>
+						<th class="text-center" style="width: 400px;"><s:message code="banana.home.account.table.label.account"></s:message></th>
+						<th class="text-center" style="width: 300px;"><s:message code="banana.home.account.table.label.password"></s:message></th>
+						<th class="text-center" style="width: 250px;"><s:message code="banana.home.account.table.label.password.strength"></s:message></th>
+						<th class="text-center" style="width: 50px;"><s:message code="banana.home.account.table.label.edit"></s:message></th>
+						<th class="text-center" style="width: 70px;"><s:message code="banana.home.account.table.label.delete"></s:message></th>
 					</thead>
 					<tbody>
 						<c:forEach var="account" items="${user.accounts }" varStatus="loop">
-							<tr>
-								<td class="text-center col-md-1">${loop.index }</td>
-								<td class="col-md-3">${account.url }</td>
-								<td class="col-md-2">${account.accountName }</td>
-								<td class="col-md-2" style="min-width: 150px;">
+							<tr id="account${account.id }">
+								<td class="text-center col-md-1">${loop.index +1}</td>
+								<td>${account.url }</td>
+								<td>${account.accountName }</td>
+								<td>
 									<form class="form-inline">
 										<div class="form-group">
 											<div class="input-group">
@@ -95,8 +115,8 @@
 										</div>
 									</form>
 								</td>
-								<td class="col-md-2" >
-									<div class="col-md-12">
+								<td>
+									<div>
 										<script type="text/javascript">
 									$(document).ready(function(){
 										$('#password${loop.index}').complexify({}, function (valid, complexity) {
@@ -113,8 +133,8 @@
 										</div>
 									</div>
 								</td>
-								<td class="text-center col-md-1"><a href="${pageContext.request.contextPath }/account/edit/${account.id}"><span class="glyphicon glyphicon-edit"></span></a></td>
-								<td class="text-center col-md-1"><a href="${pageContext.request.contextPath }/account/delete/${account.id}"><span class="glyphicon glyphicon-trash"></span></a></td>
+								<td class="text-center"><a href="${pageContext.request.contextPath }/account/edit/${account.id}"><span class="glyphicon glyphicon-edit"></span></a></td>
+								<td class="text-center"><a href="#" onclick="deleteAccount(${account.id})"><span class="glyphicon glyphicon-trash"></span></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -126,13 +146,22 @@
 	<div class="col-md-4 col-md-offset-4 text-center">
 		<nav aria-label="pagination">
 			<ul class="pagination">
-				<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-				<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-				<li class=""><a href="#">2 <span class="sr-only"></span></a></li>
-				<li class=""><a href="#">3 <span class="sr-only">(current)</span></a></li>
-				<li class=""><a href="#">4 <span class="sr-only">(current)</span></a></li>
-				<li class=""><a href="#">5 <span class="sr-only">(current)</span></a></li>
-				<li class=""><a href="#" aria-label="Previous"><span aria-hidden="true">&raquo;</span></a></li>
+				<c:if test="${key != null}">
+					<c:set var="search" value="/search/page/"></c:set>
+					<c:set var="keySearch" value="?key=${key }"></c:set>
+				</c:if>
+				<c:if test="${key == null }">
+					<c:set var="search" value="/page/"></c:set>
+					<c:set var="keySearch" value=""></c:set>
+				</c:if>
+				<c:forEach var="page" items="${pages }">
+					<c:if test="${page == currentPage }">
+						<li class="active"><a href="${pageContext.request.contextPath }${search}${page}${keySearch}">${page }<span class="sr-only">(current)</span></a></li>
+					</c:if>
+					<c:if test="${page != currentPage }">
+						<li class=""><a href="${pageContext.request.contextPath }${search }${page}${keySearch }">${page }<span class="sr-only">(current)</span></a></li>
+					</c:if>
+				</c:forEach>
 			</ul>
 		</nav>
 	</div>

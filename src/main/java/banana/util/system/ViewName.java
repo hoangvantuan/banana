@@ -2,13 +2,7 @@ package banana.util.system;
 
 public enum ViewName {
 
-  LOGIN("login"),
-  REGISTER("register"),
-  HOMEPAGE("homepage"),
-  ADDCCOUNT("addaccount"),
-  EDITACCOUNT("editaccount"),
-  RESET("reset"),
-  CHANGEPASSWORD("changepassword");
+  LOGIN("login"), REGISTER("register"), HOMEPAGE("homepage"), ADDCCOUNT("addaccount"), EDITACCOUNT("editaccount"), RESET("reset"), CHANGEPASSWORD("changepassword");
 
   String viewName;
 

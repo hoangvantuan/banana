@@ -43,7 +43,7 @@ public class UserController {
   }
 
   @RequestMapping(value = "/changepassword", method = RequestMethod.POST)
-  public String changePassword(@ModelAttribute("user") @Validated(UpdateGroup.class) User userForm, BindingResult bindingResult,Model model, HttpServletRequest request) {
+  public String changePassword(@ModelAttribute("user") @Validated(UpdateGroup.class) User userForm, BindingResult bindingResult, Model model, HttpServletRequest request) {
     return userService.setUser(userForm).setBindingResult(bindingResult).setModel(model).setRequest(request).changePassword();
   }
 

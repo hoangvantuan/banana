@@ -42,11 +42,11 @@
 			</div>
 			<div class="form-group">
 				<label for="email"><s:message code="banana.register.label.email" /><span class="text-danger">*</span></label>
-				<form:input type="email" class="form-control" path="email" value="${user.email }" placeholder="Email" required="required" />
+				<form:input type="email" class="form-control" path="email" value="${user.email }" required="required" />
 			</div>
 			<div class="form-group">
 				<label for="password"><s:message code="banana.register.label.password" /><span class="text-danger">*</span></label>
-				<form:input type="password" class="form-control" required="required" path="password" value="${user.password }" placeholder="Password" />
+				<form:input type="password" class="form-control" required="required" path="password" value="${user.password }" />
 			</div>
 			<script type="text/javascript">
 				$(document).ready(function() {
@@ -68,7 +68,7 @@
 				<p id="complexity">0%</p>
 			</div>
 			<div class="form-group">
-				<label for="confirm-password"><s:message code="banana.register.label.comfirmpassword" /><span class="text-danger">*</span></label> <input onkeyup="checkPasswordMatch()" type="password" class="form-control" name="confirm-password" id="confirm-password" required="required" placeholder="Confirm Password"> <br> <span id="checkpassword"></span>
+				<label for="confirm-password"><s:message code="banana.register.label.comfirmpassword" /><span class="text-danger">*</span></label> <input onkeyup="checkPasswordMatch()" type="password" class="form-control" name="confirm-password" id="confirm-password" required="required"> <br> <span id="checkpassword"></span>
 			</div>
 			<button type="submit" class="btn btn-primary btn-block disabled">
 				<s:message code="banana.register.btn.register" />

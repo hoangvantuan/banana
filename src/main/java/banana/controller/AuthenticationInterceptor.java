@@ -32,6 +32,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
     /* user action */
     userPaths.add("^/banana/?$");
+    userPaths.add("^/banana/search.*$");
+    userPaths.add("^/banana/page/.*$");
     userPaths.add("^/banana/account/add/?$");
     userPaths.add("^/banana/account/edit/?.*$");
     userPaths.add("^/banana/account/delele/.*$");

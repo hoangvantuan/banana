@@ -105,16 +105,14 @@ public class AccountServiceImpl extends AccountService {
       if (SystemUtil.notNull(accountTemp)) {
         accountDAO.delete(accountTemp);
       } else {
-        setMessages("banana.account.delete.error.id.not.found");
+        return "banana.account.delete.error.id.not.found";
       }
     } catch (Exception e) {
       e.printStackTrace();
-      setMessages("banana.account.delete.error.id.not.found");
+      return "banana.account.delete.error.id.not.found";
     }
 
-    addModelAttribute("messages", messages);
-
-    return ViewName.HOMEPAGE.get();
+    return "banana.account.delete.success";
   }
 
 }

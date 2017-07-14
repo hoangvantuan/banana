@@ -9,4 +9,7 @@ public abstract class AccountService extends BaseService<AccountService> {
   public abstract String editAccountForm();
 
   public abstract String deleteAccount();
+
+
+
 }

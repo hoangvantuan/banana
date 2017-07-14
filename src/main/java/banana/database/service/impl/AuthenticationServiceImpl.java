@@ -68,9 +68,9 @@ public class AuthenticationServiceImpl extends AuthenticationService {
       if (SystemUtil.notNull(userTemp)) {
         this.setMessages("banana.register.error.account.exits");
       } else {
-        userDAO.saveOrUpdate(userTemp);
+        userDAO.saveOrUpdate(user);
         EmailUtil email = new EmailUtil();
-        email.sendThankyouMail(userTemp.getEmail());
+        email.sendThankyouMail(user.getEmail());
         this.setMessages("banana.register.success");
       }
 
