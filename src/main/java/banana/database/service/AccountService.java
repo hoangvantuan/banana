@@ -10,6 +10,4 @@ public abstract class AccountService extends BaseService<AccountService> {
 
   public abstract String deleteAccount();
 
-
-
 }

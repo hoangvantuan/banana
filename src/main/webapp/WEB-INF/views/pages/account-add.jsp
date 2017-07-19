@@ -14,7 +14,7 @@
 		</div>
 		<form:form method="post" action="${pageContext.request.contextPath }/account/add" modelAttribute="account">
 			<div class="form-group">
-				<label for="url"><s:message code="banana.account.add.label.email"></s:message><span class="text-danger">*</span></label>
+				<label for="url"><s:message code="banana.account.add.label.domain"></s:message><span class="text-danger">*</span></label>
 				<form:input type="text" class="form-control" path="url" />
 			</div>
 			<div class="form-group">

@@ -55,7 +55,7 @@
 				<div class="form-group">
 					<input type="text" class="form-control" id="search-key" name="key" autofocus="autofocus">
 				</div>
-				<button type="submit" class="btn btn-primary">Search</button>
+				<button type="submit" class="btn btn-primary"><s:message code="banana.home.search.label"></s:message></button>
 			</form>
 		</div>
 	</div>
