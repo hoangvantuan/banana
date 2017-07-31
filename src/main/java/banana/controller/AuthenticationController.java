@@ -53,7 +53,7 @@ public class AuthenticationController {
   }
 
   @RequestMapping(value = "/logout", method = RequestMethod.GET)
-  public String logout(Model model, HttpServletRequest request) {
+  public String logout(HttpServletRequest request) {
     return authenticationService.setRequest(request).logout();
   }
 

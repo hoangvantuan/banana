@@ -19,7 +19,7 @@ public class HomePageServiceImpl extends HomePageService {
   @Autowired
   private UserDAO userDAO;
   @Autowired
-  AccountDAO accountDAO;
+  private AccountDAO accountDAO;
 
   public final Integer LIMIT = 10;
 
