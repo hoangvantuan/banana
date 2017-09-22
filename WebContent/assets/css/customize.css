@@ -1,0 +1,46 @@
+/*
+ * bottom hr color
+ */
+hr {
+    display: block;
+    border-top: 1px solid #0a8f9b;
+}
+
+/*
+ * navbar fix to top option bootstrap.
+ */
+body {
+	padding-top: 70px;
+}
+
+/*
+ * navbar color customize
+ */
+ .navbar-default {
+ 	background-color: #ffffff;
+ 	border-color: #0a8f9b;
+ }
+
+/*brand color*/
+ .navbar-default .navbar-brand {
+ 	color : #0a8f9b;
+ }
+
+/* menu dropdown user account name color */
+ .navbar-default .navbar-nav>li>a {
+ 	color: #0a8f9b;
+ }
+
+/*menu dropdown link color*/
+ .dropdown-menu>li>a {
+ 	color: #0a8f9b;
+ }
+
+ .btn-copy, .btn-show {
+ 	font-size: 17px;
+ }
+
+table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
