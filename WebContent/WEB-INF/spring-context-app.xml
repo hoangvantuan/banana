@@ -64,7 +64,7 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/pw_manager" />
+		<property name="url" value="jdbc:mysql://db4free.net:3306/pwmanager" />
 		<property name="username" value="mediado" />
 		<property name="password" value="pengin" />
 	</bean>
