@@ -63,10 +63,10 @@
 	<!-- Datasource -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
-		<property name="driverClassName" value="org.postgresql.Driver" />
-		<property name="url" value="jdbc:postgresql://ec2-54-243-255-57.compute-1.amazonaws.com:5432/d3n45pjeheki5u?sslmode=require" />
-		<property name="username" value="cgdvawtpjzillq" />
-		<property name="password" value="ad2057e8fca8569ad3a56bca1be2ee95387c20b26edff7ab2d89feb4e72abe53" />
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/pw_manager" />
+		<property name="username" value="mediado" />
+		<property name="password" value="pengin" />
 	</bean>
 
 	<!-- Hibernate SessionFactory Bean definition -->
@@ -81,7 +81,7 @@
 		</property>
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">>org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
