@@ -1,10 +1,7 @@
 package banana.controller;
 
-import banana.database.service.AuthenticationService;
-import banana.model.User;
-import banana.util.system.ViewName;
-import banana.validation.CreateGroup;
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +10,11 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import banana.database.service.AuthenticationService;
+import banana.model.User;
+import banana.util.system.ViewName;
+import banana.validation.CreateGroup;
 
 @Controller
 public class AuthenticationController {
@@ -47,7 +49,7 @@ public class AuthenticationController {
     return authenticationService.setModel(model).setBindingResult(bindingResult).setUser(userForm).register();
   }
 
-  @RequestMapping(value = "/active/{email}/", method = RequestMethod.GET)
+  @RequestMapping(value = "/active/{email}", method = RequestMethod.GET)
   public String active(Model model, User userForm) {
     return authenticationService.setUser(userForm).setModel(model).active();
   }
