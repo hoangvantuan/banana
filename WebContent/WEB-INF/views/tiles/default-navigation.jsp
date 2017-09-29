@@ -2,11 +2,10 @@
 <%@ include file="/WEB-INF/views/tiles/tablib.jsp" %>
 
 <script>
-	var path = "https://banana93.herokuapp.com";
 	function setLanguage(language) {
 		$.ajax({
 			type: "get",
-			url: path + "/changelanguage",
+			url: "${pageContext.request.contextPath}/changelanguage",
 			data: {
 				lang: language
 			}
@@ -30,7 +29,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="${request.contextPath }"><s:message code="banana.navbar.name"></s:message></a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath }/"><s:message code="banana.navbar.name"></s:message></a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
