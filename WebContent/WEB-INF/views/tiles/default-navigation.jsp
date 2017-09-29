@@ -2,10 +2,11 @@
 <%@ include file="/WEB-INF/views/tiles/tablib.jsp" %>
 
 <script>
+	var path = "https://banana93.herokuapp.com";
 	function setLanguage(language) {
 		$.ajax({
 			type: "get",
-			url: "${pageContext.request.contextPath}/changelanguage",
+			url: path + "/changelanguage",
 			data: {
 				lang: language
 			}
