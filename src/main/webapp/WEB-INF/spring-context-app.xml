@@ -51,7 +51,7 @@
 	<!-- i18n config -->
 	<bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-		<!-- <property name="defaultLocale" value="en" /> -->
+		<property name="defaultLocale" value="ja" />
 	</bean>
 
 	<mvc:interceptors>

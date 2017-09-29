@@ -30,7 +30,7 @@ public class EmailUtil {
 
   public void sendThankyouMail(String to) throws EmailException {
     String subject = "Thanks you for your register";
-    String content = "Thank you " + to + "for your register /n Click<a href=\"https://banana93.herokuapp.com\\" + to + "\">Here</a> to login your home page";
+    String content = "Thank you " + to + "for your register \n Click<a href=\"https://banana93.herokuapp.com/active/\\" + to + "\">Here</a> to login your home page";
     this.sendEmail(to, subject, content);
   }
 

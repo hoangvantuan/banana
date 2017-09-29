@@ -1,5 +1,12 @@
 package banana.database.service.impl;
 
+import java.util.Date;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import banana.database.dao.UserDAO;
 import banana.database.service.AuthenticationService;
 import banana.model.User;
@@ -7,10 +14,6 @@ import banana.util.email.EmailUtil;
 import banana.util.system.Path;
 import banana.util.system.SystemUtil;
 import banana.util.system.ViewName;
-import java.util.Date;
-import javax.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticationServiceImpl extends AuthenticationService {
