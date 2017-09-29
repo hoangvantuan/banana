@@ -32,6 +32,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
 	  if(!isGenerated) {
 		  generatePath(request.getContextPath());
+		  isGenerated = true;
 	  }
 
     User user = (User) request.getSession().getAttribute("user");
